@@ -1,1 +1,1 @@
-This project was forked from a CMS I built for a freelance project. I've changed the file/folder names and variable names to be as ambiguous as possible for those wanting to use it.
+This project was forked from a CMS I built as part of a freelance project. I've made the file/folder names and variable names more ambiguous in this version for those looking to clone 🚶 👬 👨‍👦‍👦  👨‍👨‍👦‍👦.
