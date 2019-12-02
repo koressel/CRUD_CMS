@@ -1,0 +1,1 @@
+This project was forked from a CMS I built for a freelance project. I've changed the file/folder names and variable names to be as ambiguous as possible for those wanting to use it.
