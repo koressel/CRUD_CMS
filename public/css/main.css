@@ -1,0 +1,247 @@
+html {margin: 0; padding: 0;}
+body {
+  font-family: "Verdana", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 20pt;
+  padding: 0 0 1em 0;
+}
+p {
+  font-size: 10pt;
+    margin: 0 auto;
+}
+aside {
+  background: #00e676;
+  color: white;
+  min-height: 100vh;
+  padding: 0;
+}
+aside .sticky-top {
+  margin: 0;
+  padding: 0;
+}
+aside img {
+  display: block;
+  width: 75px;
+  padding: 1em 0 0 0 ;
+  margin: 0 auto 1.5em auto;
+}
+
+aside #login-form button,label,input {
+  padding: 0;
+  margin: 0;
+}
+
+aside #login-form input {
+  width: 100%;
+}
+
+aside #login-form label {
+  padding: .5em 0;
+  display: block;
+}
+
+aside #login-form button {
+  margin: 1.5em 0;
+  width: 100%;
+  padding: .125em 1em;
+}
+
+aside #tab-container {
+  list-style-type: none;
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  /* border: 1px solid white; */
+  
+}
+aside #tab-container li {
+  margin: 0 0 .5em 0;
+}
+aside #tab-container button {
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 18pt;
+  font-weight: bold;
+  /* padding-top: .2em;  */
+  color: white;
+  text-shadow: 1px 1px 1px rgba(58, 58, 58, 0.377);
+}
+aside #tab-container span {
+  float: left;
+  font-size: 16pt;
+  opacity: 0;
+  transition: opacity .3s;
+}
+aside #tab-container span.active {
+  opacity: 100;
+}
+
+main {
+  margin-top: 2em;
+}
+
+main ul.page {
+  display: none;
+}
+
+main ul.active {
+  display: block;
+}
+main.container-fluid {
+  margin: 0;
+  padding: 0;
+}
+main ul li {
+  display: inline-block;
+  word-wrap: break-word
+}
+
+
+
+
+.clear {
+  clear: left;
+}
+
+
+
+ul#products-page {
+  margin: 0;
+  padding: 0;
+
+}
+
+
+#products-page li {
+      list-style-type: none;
+      /* display: inline-block; */
+     
+    }
+
+    #products-page .buttons {
+      margin: .5em 0 0 0;
+    }
+
+     #products-page h3 {
+      margin: .25em 0;
+    } 
+
+ul#blog-post-page {
+  margin: 0;
+  padding: 0;
+}
+#blog-post-page li {
+  list-style-type: none;
+  margin-bottom: 2em;
+  
+}
+#blog-post-page img.title-image {
+  width: 100%;
+}
+#blog-post-page h3 {
+  font-size: 14pt;
+  margin: .5em 0;
+}
+#blog-post-page .buttons {
+  margin: .5em auto 0 auto;
+  display: block;
+  width: fit-content;
+}
+
+.edit-overlay {
+  /* background: rgba(192, 192, 192, 0.13); */
+  background-image: linear-gradient( to bottom,
+    rgba(255, 0, 0, 0), 
+    rgba(192, 192, 192, 0.219), 
+    rgba(0, 128, 0, 0),
+    rgba(0, 128, 0, 0)
+    );
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* margin: 1em; */
+  opacity: 0; 
+  transition: all .35s;
+  border-radius: 5px;
+}
+.edit-overlay {
+  cursor: pointer;
+}
+
+.edit-overlay .center-xy{
+  position: absolute;
+  left: 0; 
+  right: 0; 
+  top: 35%;
+  margin-left: auto; 
+  margin-right: auto; 
+  width: 100px; 
+}
+
+.edit-overlay p {
+  color: rgb(110, 110, 110);
+  display: block;
+  margin: .5em auto 0 auto;
+  width: fit-content;
+  padding: 0;
+  font-size: 17pt;
+  font-weight: bold;
+  
+}
+.edit-overlay img {
+  display: block;
+  margin: 0 auto;
+  width: 50px;
+  padding: 0;
+  /* display: inline; */
+}
+.blog-post-content {
+  z-index: -1;
+  padding: 1em 0;
+  transition: all .35s ease-out;
+}
+.blog-post-content p {
+  max-height: 100px;
+  overflow: hidden;
+}
+.edit-overlay:hover {
+  opacity: 100%;
+}
+.edit-overlay:hover ~ .blog-post-content p {
+  /* color: rgba(160, 160, 160, 0.514); */
+  opacity: 15%;
+}
+.edit-overlay:hover ~ .blog-post-content h3 {
+  opacity: 15%;
+}
+.edit-overlay:hover ~ .blog-post-content img {
+  opacity: 15%;
+}
+
+
+/* 
+
+
+.delete {
+  background-color: rgb(255, 121, 121);
+  color: white;
+  border: none;
+  padding: .25em 0;
+  width: 5em;
+  margin-left: 1em;
+}
+
+.edit {
+  background-color: rgb(122, 122, 255);
+  color: white;
+  border: none;
+  padding: .25em 0;
+  width: 10em;
+} */
