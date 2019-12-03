@@ -43,10 +43,16 @@ aside #login-form label {
   display: block;
 }
 
+aside #login-form p {
+  padding: 1em 0;
+  visibility: hidden;
+  color: rgb(255, 65, 65);
+}
+
 aside #login-form button {
-  margin: 1.5em 0;
+  margin: 1.5em 0 0 0;
   width: 100%;
-  padding: .125em 1em;
+  padding: .2em 1em;
 }
 
 aside #tab-container {
@@ -60,7 +66,7 @@ aside #tab-container {
 aside #tab-container li {
   margin: 0 0 .5em 0;
 }
-aside #tab-container button {
+aside #tab-container a {
   background: none;
   border: none;
   outline: none;
@@ -69,6 +75,9 @@ aside #tab-container button {
   /* padding-top: .2em;  */
   color: white;
   text-shadow: 1px 1px 1px rgba(58, 58, 58, 0.377);
+}
+aside #tab-container a:hover {
+  text-decoration: none;
 }
 aside #tab-container span {
   float: left;

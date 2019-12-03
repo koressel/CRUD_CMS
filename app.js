@@ -18,8 +18,8 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/deleteProduct', productRouter);
-app.use('/deleteBlogPost', blogRouter);
+app.use('/products', productRouter);
+app.use('/blogposts', blogRouter);
 app.use('/error', errorRouter);
 app.use('/login', loginRouter);
 

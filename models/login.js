@@ -15,7 +15,7 @@ module.exports = {
         if (err) reject(err);
         else {
           const sql =
-            `SELECT id
+            `SELECT userId
              FROM users 
              WHERE username = "${username}"
              AND password = "${password}";`;

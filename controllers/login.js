@@ -5,15 +5,15 @@ const login = require('../models/login');
 router.post('/', (req, res, next) => {
   let username = req.body.username;
   let password = req.body.password;
+
   login.validateLoginInfo(username, password)
     .then(userId => {
       if (userId !== undefined) {
-        res.status(200).send('OK');
+        res.json(userId);
       }
       else {
-        res.status(404).send();
+        res.sendStatus(404);
       }
-
     });
 
 });
