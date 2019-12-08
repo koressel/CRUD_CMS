@@ -254,3 +254,7 @@ ul#blog-post-page {
   padding: .25em 0;
   width: 10em;
 } */
+
+#header .inline {
+  display: inline;
+}
