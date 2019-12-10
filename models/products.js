@@ -1,4 +1,5 @@
 const mysql = require('mysql');
+const superagent = require('superagent');
 
 module.exports = {
 
@@ -29,39 +30,62 @@ module.exports = {
     return getAllProducts;
   },
 
-  create: product => {
+  create: req => {
 
     let createProduct = new Promise((resolve, reject) => {
 
-      let con = mysql.createConnection({
-        host: 'localhost',
-        user: 'root',
-        password: '',
-        database: 'mydb'
+      let data = {};
+
+      let body = req.body;
+      data.title = body.title;
+      data.dimensions = body.dimensions;
+      data.price = body.price;
+      data.shipping = body.shipping;
+      let productImage = req.files.productImage.data;
+
+      let uploadToImgur = new Promise((resolve, reject) => {
+
+        superagent.post('https://api.imgur.com/3/upload')
+          .set('Authorization', 'Client-ID c9ba60e96146847')
+          .send(productImage)
+          .type('jpg')
+          .end((err, res) => {
+            if (err) reject(err);
+            else resolve(res.body.data.link);
+          });
       });
 
-      con.connect(err => {
-        if (err) reject(err);
-        else {
-          let sql = `INSERT INTO products (title, image, dimensions, price, shipping) VALUES ("${product.title}", "${product.image}", "${product.dimensions}", ${product.price},${product.shipping})`;
+      uploadToImgur
+        .then(imgURL => {
 
-          con.query(sql, (err, products, field) => {
-            if (err) {
-              console.log(err);
-              reject(`Query failed: ${sql}`);
-            }
+          let con = mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: '',
+            database: 'mydb'
+          });
+
+          con.connect(err => {
+            if (err) reject(err);
             else {
-              resolve(`Successfully created product.`);
+              let sql = `INSERT INTO products (title, image, dimensions, price, shipping) VALUES ("${data.title}", "${imgURL}", "${data.dimensions}", ${data.price},${data.shipping})`;
+
+              con.query(sql, (err, products, field) => {
+                if (err) {
+                  console.log(err);
+                  reject(`Query failed: ${sql}`);
+                }
+                else {
+                  resolve(`Successfully created product.`);
+                }
+              });
             }
           });
-        }
-      });
+        })
+        .catch(err => { reject(err); });
     });
     return createProduct;
   },
-
-
-
 
   delete: (productName) => {
     let deleteProduct = new Promise((resolve, reject) => {
@@ -89,6 +113,4 @@ module.exports = {
 
     return deleteProduct;
   }
-
-
 };
