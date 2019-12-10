@@ -11,7 +11,7 @@ $('#new-product-form').submit(e => {
   let shipping = document.querySelector('#shipping-input').value;
   let file = document.querySelector('#product-image-input').files[0];
   let fd = new FormData();
-  fd.append('file', file);
+  fd.append('productImage', file);
   fd.append('title', title);
   fd.append('dimensions', dimensions);
   fd.append('price', price);
