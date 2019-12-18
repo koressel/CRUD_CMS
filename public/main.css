@@ -258,3 +258,15 @@ ul#blog-post-page {
 #header .inline {
   display: inline;
 }
+
+.modal {
+ overflow-y: auto;
+}
+.modal-open {
+ overflow: auto;
+}
+
+#preview-image {
+  width: 75%;
+  margin-top: 1em;
+}

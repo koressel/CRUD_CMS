@@ -5,7 +5,7 @@ const blogPosts = require('../models/blog');
 router.get('/', (req, res, next) => {
   blogPosts.getAll()
     .then(posts => {
-      res.render('blogposts', { blogPosts: posts });
+      res.render('posts', { blogPosts: posts });
     })
     .catch(err => {
       res.render('error');

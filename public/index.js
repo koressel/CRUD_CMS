@@ -31,6 +31,40 @@ $('#new-product-form').submit(e => {
   });
 });
 
+
+
+
+
+
+// show image after selection
+let img_input = document.querySelector('#product-image-input');
+let previewImage = document.querySelector('#preview-image');
+img_input.addEventListener('change', e => {
+  showImage(e);
+});
+
+function showImage(e) {
+
+  if (e.target.files && e.target.files[0]) {
+    console.log('files here')
+    let reader = new FileReader();
+
+    reader.onload = e => {
+      console.log(e.target.result)
+      previewImage.src = e.target.result;
+    };
+
+    reader.readAsDataURL(e.target.files[0]);
+  }
+}
+
+
+
+
+
+
+
+
   // $('#submit-button').click(e => {
   //   e.preventDefault();
 

@@ -12,6 +12,17 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/new', (req, res, next) => {
+  res.render('new')
+  // products.getAll()
+  //   .then(_products => {
+  //     res.render('products', { products: _products });
+  //   })
+  //   .catch(err => {
+  //     res.render('error');
+  //   });
+});
+
 
 
 // router.post('/', (req, res, next) => {
