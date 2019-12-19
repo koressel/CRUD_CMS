@@ -6,18 +6,12 @@ $('#new-product-form').submit(e => {
 
 
   let title = document.querySelector('#title-input').value;
-  let dimensions = document.querySelector('#dimensions-input').value;
   let price = document.querySelector('#price-input').value;
-  let shipping = document.querySelector('#shipping-input').value;
   let file = document.querySelector('#product-image-input').files[0];
   let fd = new FormData();
   fd.append('productImage', file);
   fd.append('title', title);
-  fd.append('dimensions', dimensions);
   fd.append('price', price);
-  fd.append('shipping', shipping);
-
-
 
   $.ajax({
     url: '/uploadProduct',

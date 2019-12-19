@@ -3,7 +3,7 @@ const superagent = require('superagent');
 
 module.exports = {
 
-  getAll: () => {
+  getAllUnsold: () => {
     let getAllProducts = new Promise((resolve, reject) => {
       let con = mysql.createConnection({
         host: 'localhost',
@@ -15,7 +15,34 @@ module.exports = {
       con.connect(err => {
         if (err) reject(err);
         else {
-          const sql = `SELECT * FROM products;`;
+          const sql = `SELECT * FROM product WHERE sold=0;`;
+          con.query(sql, (err, products, field) => {
+            if (err) {
+              reject(err);
+            }
+            else {
+              resolve(products);
+            }
+          });
+        }
+      });
+    });
+    return getAllProducts;
+  },
+
+  getAllSold: () => {
+    let getAllProducts = new Promise((resolve, reject) => {
+      let con = mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'mydb'
+      });
+
+      con.connect(err => {
+        if (err) reject(err);
+        else {
+          const sql = `SELECT * FROM product WHERE sold=1;`;
           con.query(sql, (err, products, field) => {
             if (err) {
               reject(err);
@@ -38,9 +65,7 @@ module.exports = {
 
       let body = req.body;
       data.title = body.title;
-      data.dimensions = body.dimensions;
       data.price = body.price;
-      data.shipping = body.shipping;
       let productImage = req.files.productImage.data;
 
       let uploadToImgur = new Promise((resolve, reject) => {
@@ -68,7 +93,7 @@ module.exports = {
           con.connect(err => {
             if (err) reject(err);
             else {
-              let sql = `INSERT INTO products (title, image, dimensions, price, shipping) VALUES ("${data.title}", "${imgURL}", "${data.dimensions}", ${data.price},${data.shipping})`;
+              let sql = `INSERT INTO product (title, image, price, sold, customerID) VALUES ("${data.title}", "${imgURL}", ${data.price}, 0, 0)`;
 
               con.query(sql, (err, products, field) => {
                 if (err) {

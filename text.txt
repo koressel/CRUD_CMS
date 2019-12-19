@@ -1,4 +1,14 @@
-Products
- + Create New
+product
+ title
+ price
+ sold
+ customer id
 
-Sign Out
+customer
+ id
+ name
+ phone
+ email
+ address
+ state
+ zip-code

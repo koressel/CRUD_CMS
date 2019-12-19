@@ -5,6 +5,7 @@ const fileupload = require('express-fileupload');
 const indexRouter = require('./controllers/index');
 const loginRouter = require('./controllers/login');
 const productRouter = require('./controllers/products');
+const soldRouter = require('./controllers/soldproducts');
 const blogRouter = require('./controllers/blog');
 const errorRouter = require('./controllers/error');
 const createNewRouter = require('./controllers/createnew');
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/products', productRouter);
+app.use('/soldproducts', soldRouter);
 app.use('/blogposts', blogRouter);
 app.use('/error', errorRouter);
 app.use('/login', loginRouter);

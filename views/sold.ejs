@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" href="images/javascript-logo.png">
-  <title>Products</title>
+  <title>Sold Products</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="main.css">
@@ -30,12 +30,12 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/products">All Products</a>
-            <a class="dropdown-item" href="/soldproducts">Sold</a>
+            <a class="dropdown-item" href="#">Sold</a>
 
           </div>
         </li>
         <li class="nav-item mr-3">
-          <a class="nav-link" data-toggle="modal" data-target="#new-modal" href="#">Create New</a>
+          <a class="nav-link disabled" data-toggle="modal" data-target="#new-modal" href="#">Create New</a>
         </li>
         <li class="nav-item">
           <button class="btn btn-outline-primary" type="button">Log Out</button>
@@ -97,37 +97,10 @@
 
   <div class="container">
     <div class="row">
-      <!-- <aside class=" col-xs-4 col-sm-4 col-md-4 col-lg-3 aside">
-        <div class="sticky-top">
-          <img src="images/horny.png">
-          <ul id="tab-container">
-            <li id="products-tab">
-              <span class="active">&#x258D;</span>
-              <a href="/products">Products</a>
-              <button>Products</button>
-              <div class="clear"></div>
-            </li>
-            <li id="blog-post-tab">
-              <span>&#x258D;</span>
-              <a href="/blogposts">Blog Posts</a>
-              <button>Blog Posts</button>
-              <div class="clear"></div>
-            </li>
-            <li id="create-new-tab">
-              <span>&#x258D;</span>
-              <a href="/createnew">Create New</a>
-              <button>Create New</button>
-              <div class="clear"></div>
-            </li>
-          </ul>
-        </div>
-
-      </aside> -->
       <main class="col-sm-12 main">
         <div class="pb-2 mt-4 mb-2 border-bottom">
-          <h2>Products</h2>
+          <h2>Sold Products</h2>
         </div>
-
         <div class="row">
           <% products.forEach(product => { %>
           <div class="col-sm-6 col-md-4 col-lg-3 mt-5">

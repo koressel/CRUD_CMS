@@ -3,24 +3,13 @@ const router = express.Router();
 const products = require('../models/products');
 
 router.get('/', (req, res, next) => {
-  products.getAll()
+  products.getAllUnsold()
     .then(_products => {
       res.render('products', { products: _products });
     })
     .catch(err => {
       res.render('error');
     });
-});
-
-router.get('/new', (req, res, next) => {
-  res.render('new')
-  // products.getAll()
-  //   .then(_products => {
-  //     res.render('products', { products: _products });
-  //   })
-  //   .catch(err => {
-  //     res.render('error');
-  //   });
 });
 
 
