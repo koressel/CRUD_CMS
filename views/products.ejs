@@ -106,22 +106,10 @@
           <% products.forEach(product => { %>
 
           <div class="col-sm-6 col-md-4 col-lg-3 mt-5 product-content">
-            <div class="product-data">
-              <img src="<%= product.image %>">
-              <h3><%= product.title %></h3>
-              <p>$ <%= product.price %></p>
-            </div>
-
-            <div class="edit-overlay">
-              <div class="center-xy">
-                <img src="images/edit-icon-grey.png">
-                <p>Edit</p>
-              </div>
-            </div>
-
-
+            <img src="<%= product.image %>">
+            <h3><%= product.title %></h3>
+            <p>$ <%= product.price %></p>
           </div>
-
           <% }) %>
         </div>
 
