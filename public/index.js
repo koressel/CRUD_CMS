@@ -29,10 +29,16 @@ $('#new-product-form').submit(e => {
 let img_input = document.querySelector('#product-image-input');
 let previewImage = document.querySelector('#preview-image');
 img_input.addEventListener('change', e => {
-  showImage(e);
+  showImage(e, previewImage);
 });
 
-function showImage(e) {
+let editImg_input = document.querySelector('#edit-product-image-input');
+let editPreviewImage = document.querySelector('#edit-preview-image');
+editImg_input.addEventListener('change', e => {
+  showImage(e, editPreviewImage);
+});
+
+function showImage(e, preview) {
 
   if (e.target.files && e.target.files[0]) {
     console.log('files here')
@@ -40,7 +46,7 @@ function showImage(e) {
 
     reader.onload = e => {
       console.log(e.target.result);
-      previewImage.src = e.target.result;
+      preview.src = e.target.result;
     };
 
     reader.readAsDataURL(e.target.files[0]);
@@ -63,13 +69,15 @@ main_div.addEventListener('click', e => {
 });
 
 function showEditModal(img, title, price) {
-  let img_input = document.querySelector('#edit-preview-image');
+  let preview_img = document.querySelector('#edit-preview-image');
   let title_input = document.querySelector('#edit-title-input');
   let price_input = document.querySelector('#edit-price-input');
+  let img_input = document.querySelector('#edit-product-image-input');
 
-  img_input.src = img;
+  preview_img.src = img;
   title_input.value = title;
   price_input.value = price;
+  img_input.value = null;
 
   $('#edit-modal').modal('show');
 }
