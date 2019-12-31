@@ -39,12 +39,39 @@ function showImage(e) {
     let reader = new FileReader();
 
     reader.onload = e => {
-      console.log(e.target.result)
+      console.log(e.target.result);
       previewImage.src = e.target.result;
     };
 
     reader.readAsDataURL(e.target.files[0]);
   }
+}
+
+// handle edit product click
+let main_div = document.querySelector('.main');
+
+main_div.addEventListener('click', e => {
+  let target = e.target;
+  if (target.classList.contains('product')) {
+    let children = target.children;
+    let img = children[0].src;
+    let title = children[1].innerText;
+    let price = children[2].innerText.substr(2);
+    showEditModal(img, title, price);
+
+  }
+});
+
+function showEditModal(img, title, price) {
+  let img_input = document.querySelector('#edit-preview-image');
+  let title_input = document.querySelector('#edit-title-input');
+  let price_input = document.querySelector('#edit-price-input');
+
+  img_input.src = img;
+  title_input.value = title;
+  price_input.value = price;
+
+  $('#edit-modal').modal('show');
 }
 
 
