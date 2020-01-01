@@ -10,6 +10,7 @@ const blogRouter = require('./controllers/blog');
 const errorRouter = require('./controllers/error');
 const createNewRouter = require('./controllers/createnew');
 const uploadProduct = require('./controllers/productupload');
+const deleteProduct = require('./controllers/delete');
 const log = require('./helpers/logger');
 
 const app = express();
@@ -31,6 +32,7 @@ app.use('/error', errorRouter);
 app.use('/login', loginRouter);
 app.use('/createnew', createNewRouter);
 app.use('/uploadProduct', uploadProduct);
+app.use('/deleteProduct', deleteProduct);
 
 const port = process.env.PORT || 3030;
 app.listen(port, () => log(`Server running on port: ${port}`));

@@ -123,7 +123,7 @@ module.exports = {
       });
 
       con.connect(err => {
-        const sql = `DELETE FROM products WHERE title="${productName}";`;
+        const sql = `DELETE FROM product WHERE title="${productName}";`;
         con.query(sql, (err, products, field) => {
           if (err) {
             console.log(err);

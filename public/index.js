@@ -1,5 +1,4 @@
 
-
 let productForm = document.querySelector('#new-product-form');
 $('#new-product-form').submit(e => {
   e.preventDefault();
@@ -53,18 +52,19 @@ function showImage(e, preview) {
   }
 }
 
-// handle edit product click
+// handle product click
 let main_div = document.querySelector('.main');
 
 main_div.addEventListener('click', e => {
   let target = e.target;
+
   if (target.classList.contains('product')) {
     let children = target.children;
     let img = children[0].src;
     let title = children[1].innerText;
     let price = children[2].innerText.substr(2);
-    showEditModal(img, title, price);
 
+    showEditModal(img, title, price);
   }
 });
 
@@ -82,11 +82,27 @@ function showEditModal(img, title, price) {
   $('#edit-modal').modal('show');
 }
 
+// handle delete button
+let delete_btn = document.querySelector('#delete-button');
+let title_input = document.querySelector('#edit-title-input');
+delete_btn.addEventListener('click', e => {
+  if (confirm(`Are you sure you want to delete "${title_input.value}"`)) {
+    $.ajax({
+      type: "post",
+      url: '/deleteProduct',
+      data: { "productName": title_input.value },
+      success: () => {
+        let id = title_input.value.replace(/ /g, "-");
+        let deletedProduct_div = document.querySelector('#' + id);
+        deletedProduct_div.remove();
+        $('#edit-modal').modal('hide');
+      },
+      error: () => { window.location.href = '/error'; }
+    });
+  }
+});
 
-
-
-
-// // handle product delete buttons
+// handle product delete button
 // let products = document.querySelector('#products-page');
 // products.addEventListener('click', (e) => {
 //   if (e.target.classList.contains('delete')) {
