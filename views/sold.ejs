@@ -5,11 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="icon" href="images/javascript-logo.png">
+  <link rel="icon" href="../images/javascript-logo.png">
   <title>Sold Products</title>
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="../main.css">
 </head>
 
 <body id="app">
@@ -103,10 +103,10 @@
         </div>
         <div class="row">
           <% products.forEach(product => { %>
-          <div class="col-sm-6 col-md-4 col-lg-3 mt-5">
-            <img src="<%= product.image %>">
-            <h3><%= product.title %></h3>
-            <p>$ <%= product.price %></p>
+          <div class="col-sm-6 col-md-4 col-lg-3 mt-5 product">
+            <img class="no-click lighten" src="<%= product.image %>">
+            <h3 class="no-click lighten"><%= product.title %></h3>
+            <p class="no-click lighten">$ <%= product.price %></p>
           </div>
           <% }) %>
         </div>
@@ -122,7 +122,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"
     integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm"
     crossorigin="anonymous"></script>
-  <script type="text/javascript" src="index.js"></script>
+  <!-- <script type="text/javascript" src="../index.js"></script> -->
 </body id="app">
 
 </html>

@@ -3,7 +3,6 @@ var bodyParser = require("body-parser");
 const path = require('path');
 const fileupload = require('express-fileupload');
 const indexRouter = require('./controllers/index');
-const loginRouter = require('./controllers/login');
 const productRouter = require('./controllers/products');
 const errorRouter = require('./controllers/error');
 const log = require('./helpers/logger');
@@ -20,7 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/products', productRouter);
-app.use('/login', loginRouter);
 app.use('/error', errorRouter);
 
 const port = process.env.PORT || 3030;

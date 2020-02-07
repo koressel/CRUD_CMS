@@ -12,6 +12,16 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/sold', (req, res, next) => {
+  products.getAllSold()
+    .then(_products => {
+      res.render('sold', { products: _products });
+    })
+    .catch(err => {
+      res.render('error');
+    });
+});
+
 router.post('/create', (req, res) => {
   products.create(req)
 

@@ -1,1 +1,3 @@
-[] move login route to index controller
+[X] move login route to index controller
+[X] move sold products route to products router
+[X] fix sold view grid
