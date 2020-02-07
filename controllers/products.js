@@ -12,16 +12,27 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.post('/create', (req, res) => {
+  products.create(req)
 
+    .then(result => {
+      res.sendStatus(200);
+    })
 
-// router.post('/', (req, res, next) => {
-//   let productName = req.body.productName;
+    .catch(err => {
+      console.log(err)
+      res.sendStatus(400);
+    });
+});
 
-//   products.delete(productName).then((response) => {
-//     console.log(response);
-//   });
+router.post('/delete', (req, res) => {
+  let productName = req.body.productName;
 
-//   res.status(200).send('OK');
-// });
+  products.delete(productName).then((response) => {
+    console.log(response);
+  });
+
+  res.sendStatus(200);
+});
 
 module.exports = router;

@@ -13,13 +13,14 @@ $('#new-product-form').submit(e => {
   fd.append('price', price);
 
   $.ajax({
-    url: '/uploadProduct',
+    url: 'products/create',
     type: 'post',
     data: fd,
     contentType: false,
     processData: false,
     success: function (response) {
-      console.log('horaahhh');
+      $('#new-modal').modal('toggle');
+      location.reload();
     },
   });
 });
@@ -89,7 +90,7 @@ delete_btn.addEventListener('click', e => {
   if (confirm(`Are you sure you want to delete "${title_input.value}"`)) {
     $.ajax({
       type: "post",
-      url: '/deleteProduct',
+      url: 'products/delete',
       data: { "productName": title_input.value },
       success: () => {
         let id = title_input.value.replace(/ /g, "-");
