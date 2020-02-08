@@ -1,3 +1,3 @@
-This project was forked from a CMS I built as part of a freelance project. It's set up for both a blog and an eccomerce storefront. I've made the file/folder names and variable names more ambiguous in this version for ease of reading.
+This project was forked from a CMS I built as part of a freelance project. This project came about because I was looking for a free CMS plugin for Node.js, and all the free options required the user to write markup. That wasn't an option so I built my own. I've made the file/folder names and variable names ambiguous in this version for reusability.
 
 Feel free to email me if you have any questions at koressel.dev@gmail.com.
