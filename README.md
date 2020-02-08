@@ -1,3 +1,3 @@
-This project was forked from a CMS(Content Management System) I built as part of a freelance project. This project came about because I was searching for a free CMS plugin for Node.js that didnt require the use of markup. None existed so I built my own. This solution isn't very robust, but rather offers a quick drop-in solution to get up and running fast. The file/folder and variable names are ambiguous in this version for reusability.
+This project was forked from a CMS (Content Management System) I built as part of a freelance project. This project originated while searching for a CMS plugin for Node.js that was both free, and didnt require the use of markdown. None existed so I built my own. This solution isn't very robust, but rather offers a quick drop-in solution to get up and running fast. The file/folder and variable names are ambiguous in this version for reusability.
 
 Feel free to email me if you have any questions at koressel.dev@gmail.com.
