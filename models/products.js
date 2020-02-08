@@ -112,6 +112,86 @@ module.exports = {
     return createProduct;
   },
 
+  update: (req) => {
+    let updateProduct = new Promise((resolve, reject) => {
+      let data = {};
+
+      let body = req.body;
+      data.title = body.title;
+      data.price = body.price;
+      data.field = body.field;
+
+      if (req.files) {
+        let productImage = req.files.image.data;
+
+        let uploadToImgur = new Promise((resolve, reject) => {
+          superagent.post('https://api.imgur.com/3/upload')
+            .set('Authorization', 'Client-ID c9ba60e96146847')
+            .send(productImage)
+            .type('jpg')
+            .end((err, res) => {
+              if (err) reject(err);
+              else resolve(res.body.data.link);
+            });
+        });
+
+        uploadToImgur
+          .then(imgURL => {
+
+            let con = mysql.createConnection({
+              host: 'localhost',
+              user: 'root',
+              password: '',
+              database: 'mydb'
+            });
+
+            con.connect(err => {
+              if (err) reject(err);
+              else {
+                let sql = `UPDATE product SET title="${data.title}",price="${data.price}", image="${imgURL}" WHERE title="${data.field}";`;
+                con.query(sql, (err, products, field) => {
+                  if (err) {
+                    console.log(err);
+                    reject(`Query failed: ${sql}`);
+                  }
+                  else {
+                    resolve(`Successfully updated product.`);
+                  }
+                });
+              }
+            });
+          })
+          .catch(err => { reject(err); });
+      }
+      else {
+        let con = mysql.createConnection({
+          host: 'localhost',
+          user: 'root',
+          password: '',
+          database: 'mydb'
+        });
+
+        con.connect(err => {
+          if (err) reject(err);
+          else {
+            let sql = `UPDATE product SET title="${data.title}", price=${data.price} WHERE title="${data.field}";`;
+
+            con.query(sql, (err, products, field) => {
+              if (err) {
+                console.log(err);
+                reject(`Query failed: ${sql}`);
+              }
+              else {
+                resolve(`Successfully updated product.`);
+              }
+            });
+          }
+        });
+      }
+    });
+    return updateProduct;
+  },
+
   delete: (productName) => {
     let deleteProduct = new Promise((resolve, reject) => {
 

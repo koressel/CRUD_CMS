@@ -1,3 +1,7 @@
+02/07/2020
 [X] move login route to index controller
 [X] move sold products route to products router
 [X] fix sold view grid
+
+02/08/2020
+[X] add save/update feature

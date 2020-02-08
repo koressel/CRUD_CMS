@@ -45,4 +45,12 @@ router.post('/delete', (req, res) => {
   res.sendStatus(200);
 });
 
+router.post('/update', (req, res) => {
+  products.update(req).then((response) => {
+    console.log(response);
+  });
+
+  res.sendStatus(200);
+});
+
 module.exports = router;

@@ -70,6 +70,7 @@ main_div.addEventListener('click', e => {
 });
 
 function showEditModal(img, title, price) {
+  let edit_modal = document.querySelector('#edit-modal');
   let preview_img = document.querySelector('#edit-preview-image');
   let title_input = document.querySelector('#edit-title-input');
   let price_input = document.querySelector('#edit-price-input');
@@ -80,14 +81,81 @@ function showEditModal(img, title, price) {
   price_input.value = price;
   img_input.value = null;
 
+  edit_modal.dataset.title = title;
+  edit_modal.dataset.price = price;
+
   $('#edit-modal').modal('show');
 }
+
+// handle edit-form
+$('#edit-product-form').submit(e => {
+  e.preventDefault();
+
+  let edit_modal = document.querySelector('#edit-modal');
+  let title = document.querySelector('#edit-title-input').value;
+  let price = document.querySelector('#edit-price-input').value;
+  let image = document.querySelector('#edit-product-image-input').files[0];
+
+  if (confirm(`Are you sure you want to save and update product "${title}"`)) {
+
+    let fd = new FormData();
+
+    if (title === edit_modal.dataset.title && price === edit_modal.dataset.price && !image) {
+      $('#edit-modal').modal('hide');
+    }
+    else {
+
+      if (title !== edit_modal.dataset.title) {
+        fd.append('title', title);
+        fd.append('field', edit_modal.dataset.title);
+      }
+      else {
+        fd.append('title', edit_modal.dataset.title);
+        fd.append('field', edit_modal.dataset.title);
+      }
+
+      if (price !== edit_modal.dataset.price) {
+        fd.append('price', price);
+      }
+      else {
+        fd.append('price', edit_modal.dataset.price);
+      }
+
+      if (image) {
+        fd.append('image', image);
+      }
+
+      $.ajax({
+        type: "post",
+        url: 'products/update',
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: () => {
+          $('#edit-modal').modal('hide');
+
+          // This delays the page reload to give ample time for data to
+          // propagate across domain and Imgur servers. This is not ideal. 
+          setTimeout(reloadPage, 2000);
+          function reloadPage() {
+            location.reload();
+          }
+
+        },
+        error: () => { window.location.href = '/error'; }
+      });
+    }
+  }
+});
 
 // handle delete button
 let delete_btn = document.querySelector('#delete-button');
 let title_input = document.querySelector('#edit-title-input');
+
 delete_btn.addEventListener('click', e => {
+
   if (confirm(`Are you sure you want to delete "${title_input.value}"`)) {
+
     $.ajax({
       type: "post",
       url: 'products/delete',
@@ -95,48 +163,13 @@ delete_btn.addEventListener('click', e => {
       success: () => {
         let id = title_input.value.replace(/ /g, "-");
         let deletedProduct_div = document.querySelector('#' + id);
+
         deletedProduct_div.remove();
         $('#edit-modal').modal('hide');
       },
       error: () => { window.location.href = '/error'; }
     });
+
   }
+
 });
-
-// handle product delete button
-// let products = document.querySelector('#products-page');
-// products.addEventListener('click', (e) => {
-//   if (e.target.classList.contains('delete')) {
-//     let _productName = e.target.parentNode.parentNode.id;
-
-//     if (confirm(`Are you sure you want to delete ${_productName}?`)) {
-//       $.ajax({
-//         type: "post",
-//         url: '/deleteProduct',
-//         data: { "productName": _productName },
-//         success: () => { e.target.parentNode.parentNode.remove(); },
-//         error: () => { window.location.href = '/error'; }
-//       });
-//     }
-//   }
-
-// });
-
-// // handle blog post delete buttons
-// let blogPosts = document.querySelector('#blog-post-page');
-// blogPosts.addEventListener('click', (e) => {
-//   if (e.target.classList.contains('delete')) {
-//     let _blogPostName = e.target.parentNode.parentNode.id;
-
-//     if (confirm(`Are you sure you want to delete ${_blogPostName}?`)) {
-//       $.ajax({
-//         type: "post",
-//         url: '/deleteBlogPost',
-//         data: { "blogPostName": _blogPostName },
-//         success: () => { e.target.parentNode.parentNode.remove(); },
-//         error: () => { window.location.href = '/error'; }
-//       });
-//     }
-//   }
-
-// });
