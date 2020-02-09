@@ -28,28 +28,34 @@ aside img {
   padding: 1em 0 0 0 ;
   margin: 0 auto 1.5em auto;
 }
+#login-form {
+  /* border: 1px solid rgb(39, 39, 39); */
+  box-shadow: 1px 1px 10px rgb(146, 146, 146);
+  border-radius: 1%;
+  padding: 1em;
+}
 
-aside #login-form button,label,input {
+#login-form button,label,input {
   padding: 0;
   margin: 0;
 }
 
-aside #login-form input {
+#login-form input {
   width: 100%;
 }
 
-aside #login-form label {
+#login-form label {
   padding: .5em 0;
   display: block;
 }
 
-aside #login-form p {
-  padding: 1em 0;
+#login-form p#error-message {
+  padding: 1em 0 0 0;
   visibility: hidden;
   color: rgb(255, 65, 65);
 }
 
-aside #login-form button {
+#login-form button {
   margin: 1.5em 0 0 0;
   width: 100%;
   padding: .2em 1em;
@@ -287,4 +293,12 @@ ul#blog-post-page {
 #edit-preview-image {
   width: 50%;
   margin-top: 1em;
+}
+
+.brand-website {
+  font-size: 10pt;
+}
+
+.my-tooltip {
+  background: rgb(216, 216, 216);
 }

@@ -13,7 +13,38 @@
 </head>
 
 <body>
-  <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">My Dashboard</a>
+  </nav>
+
+  <main>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8">
+          <div class="jumbotron">
+            <p>This is an example CMS dashboard and ecommerce storefront. Use username "admin" and
+              password "1234" to log in.
+            </p></br>
+            <p>Learn more at <a href="https://github.com/koressel/CRUD_CMS">github.com/koressel/crud_cms</a></p>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <form id="login-form">
+            <label>Username</label>
+            <input type="text" name="username" value="admin">
+            <label>Password</label>
+            <input type="password" name="password" value="1234">
+            <p id="error-message">Invalid username and password. Please try again.</p>
+            <button id="login-button" class=" btn btn-primary" type="submit">Login</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- <div class="container-fluid">
     <div class="row">
       <aside class=" col-xs-4 col-sm-4 col-md-4 col-lg-3 aside">
         <div class="sticky-top">
@@ -26,31 +57,16 @@
             <button id="login-button" type="submit">Login</button>
             <p id="error-message">Invalid username and or password. Please try again.</p>
           </div>
-
-          <!-- <ul id="tab-container">
-            <li id="products-tab">
-              <span class="active">&#x258D;</span>
-              <button>Products</button>
-              <div class="clear"></div>
-            </li>
-            <li id="blog-post-tab">
-              <span>&#x258D;</span>
-              <button>Blog Posts</button>
-              <div class="clear"></div>
-            </li>
-            <li id="create-new-tab">
-              <span>&#x258D;</span>
-              <button>Create New</button>
-              <div class="clear"></div>
-            </li>
-          </ul> -->
         </div>
 
       </aside>
       <main class="col-sm-9 main">
+        <div class="tooltip">
+          <p>This website is</p>
+        </div>
       </main>
     </div>
-  </div>
+  </div> -->
   </div>
 
 

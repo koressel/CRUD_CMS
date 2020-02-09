@@ -22,8 +22,8 @@ $(document).ready(() => {
       sendLoginInfo
         .fail(err => {
           errorMSG.style.visibility = 'visible';
-          usernameINPUT.value = '';
-          passwordINPUT.value = '';
+          usernameINPUT.value = 'admin';
+          passwordINPUT.value = '1234';
         })
         .done(result => {
           // let _userId = JSON.stringify(result.userId);
