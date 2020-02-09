@@ -6,3 +6,7 @@
 02/08/2020
 [X] add save/update feature
 [X] edit readme.md
+
+02/09/2020
+[X] add storefront feature
+[] fix duplicate html code inconsistencies

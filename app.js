@@ -4,6 +4,7 @@ const path = require('path');
 const fileupload = require('express-fileupload');
 const indexRouter = require('./controllers/index');
 const productRouter = require('./controllers/products');
+const storefrontRouter = require('./controllers/storefront');
 const errorRouter = require('./controllers/error');
 const log = require('./helpers/logger');
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/products', productRouter);
+app.use('/storefront', storefrontRouter);
 app.use('/error', errorRouter);
 
 const port = process.env.PORT || 3030;

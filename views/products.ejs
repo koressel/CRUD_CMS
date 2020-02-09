@@ -38,7 +38,7 @@
           <a class="nav-link" data-toggle="modal" data-target="#new-modal" href="#">Create New</a>
         </li>
         <li class="nav-item">
-          <button class="btn btn-outline-primary" type="button">Log Out</button>
+          <a class="btn btn-outline-primary" href="/" type="button">Log Out</a>
         </li>
       </ul>
     </div>
@@ -96,28 +96,35 @@
   </div>
 
   <div class="container">
-    <div class="row">
-      <main class="col-sm-12 main">
-        <div class="pb-2 mt-4 mb-2 border-bottom">
-          <h2>Products</h2>
-        </div>
+    <main class="col-sm-12 main">
 
-        <div class="row">
-          <% products.forEach(product => { %>
-          <div id="<%= product.title.replace(/ /g, '-') %>" class="col-sm-6 col-md-4 col-lg-3 mt-5 product">
-            <img class="no-click lighten" src="<%= product.image %>">
-            <h3 class="no-click lighten"><%= product.title %></h3>
-            <p class="no-click lighten">$ <%= product.price %></p>
-            <div class="edit-overlay no-click">
-              <div class="center-xy">
-                <p>Edit</p>
-              </div>
+      <div class="pb-2 mt-4 mb-2 border-bottom">
+        <h2>Products</h2>
+      </div>
+      <div class="jumbotron mt-4">
+        <p>Here you can create and edit products. Go to <a href="/storefront">mousepads.com/storefront</a> to view
+          your changes with an
+          example
+          storefront.</p></br>
+        <p>* The products list reset every 10 minutes.</p>
+      </div>
+
+      <div class="row">
+        <% products.forEach(product => { %>
+        <div id="<%= product.title.replace(/ /g, '-') %>" class="col-sm-6 col-md-4 col-lg-3 mt-5 product">
+          <img class="no-click lighten" src="<%= product.image %>">
+          <h3 class="no-click lighten"><%= product.title %></h3>
+          <p class="no-click lighten">$ <%= product.price %></p>
+          <div class="edit-overlay no-click">
+            <div class="center-xy">
+              <p>Edit</p>
             </div>
           </div>
-          <% }) %>
         </div>
-      </main>
-    </div>
+        <% }) %>
+      </div>
+    </main>
+  </div>
   </div>
   </div>
 
